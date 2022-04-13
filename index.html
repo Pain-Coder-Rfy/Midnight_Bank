@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Midnight_home</title>
+</head>
+
+<body>
+    <!-- login page-------------- -->
+
+
+
+    <div class="login_page" id="login_page">
+        <h1 class="text-center">Welcome to Midnight_Bank</h1>
+        <div class="login_area">
+            <h4>Login</h4>
+            <input type="text" class="form-control" placeholder="Email"><br>
+            <input type="password" name="" id="" placeholder="Password" class="form-control">
+            <br>
+            <button id="login-btn" class="btn btn-success">Enter</button>
+        </div>
+    </div>
+
+
+    <!-- transaction-page--------------- -->
+
+
+    <div id="transaction_page">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="Deposit status">
+                    <h5>Deposit</h5>
+                    <h2>$ <span id="deposit_amount_current">00</span></h2>
+                </div>
+               
+            </div>
+            <div class="col-md-4">
+                <div class="Withdraw status">
+                 <h5>Withdraw</h5>
+                 <h2>$00</h2>
+                </div>
+                
+            </div>
+            <div class="col-md-4">
+                <div class="Balance status">
+
+                    <h5>Balance</h5>
+                    <h2>$ <span id="current_balance">1000</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="login_area">
+                    <h4>Deposit</h4>
+                    <input id="deposit_Amount" type="text" class="form-control" placeholder="$ amount you want to deposit">
+                    <br>
+                    <button id="deposit_btn" class="btn btn-success">
+                        Deposit
+                    </button>
+                </div>
+               
+            </div>
+            <div class="col-md-6">
+                <div class="login_area">
+                    <h4>Withdraw</h4>
+                    <input id="withdraw_amount" type="text" class="form-control" placeholder="$ amount you want to withdraw">
+                    <br>
+                    <button id="withdraw_btn" class="btn btn-success">Withdraw</button>
+                </div>
+                </div>
+             
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- javascript------------------ -->
+    <script>
+        //------------- login button event----------
+
+        const button = document.getElementById('login-btn');
+        button.addEventListener("click", function () {
+            const login_page = document.getElementById('login_page');
+            login_page.style.display = "none";
+            const transaction_page =document.getElementById('transaction_page');
+            transaction_page.style.display = 'block'
+        })
+
+
+
+
+        const deposit_btn = document.getElementById('deposit_btn');
+        deposit_btn.addEventListener('click', function(){
+         const deposit_Number = input_number("deposit_Amount");
+         console.log(deposit_Number);
+
+
+
+
+
+
+
+           // -------------deposit button event---------------
+
+            updateMethod("deposit_amount_current", deposit_Number);
+
+            // --------------balance event------------------
+
+            updateMethod("current_balance", deposit_Number);
+
+            // -----------------------------------------------
+
+            document.getElementById('deposit_Amount').value = " ";
+
+
+        })
+
+        // -----------balance-event-----------
+        const withdraw_btn = document.getElementById('withdraw_btn');
+        withdraw_btn.addEventListener('click',function(){
+            const Withdraw_number = input_number('withdraw_amount')
+            console.log(Withdraw_number);
+        })
+
+
+        function updateMethod(id, deposit_Number){
+            const current = document.getElementById(id).innerText;
+            const current_number = parseFloat(current);
+            const total = deposit_Number + current_number;
+            document.getElementById(id).innerText = total;
+        }
+
+        function input_number(id){
+            const amount = document.getElementById(id).value;
+            const Number = parseFloat(amount);
+            return Number;
+        }
+
+
+    </script>
+
+</body>
+
+</html>
