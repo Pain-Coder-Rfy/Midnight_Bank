@@ -44,7 +44,7 @@
             <div class="col-md-4">
                 <div class="Withdraw status">
                  <h5>Withdraw</h5>
-                 <h2>$00</h2>
+                 <h2>$<span id="withdraw_amount_current">00</span></h2>
                 </div>
                 
             </div>
@@ -85,22 +85,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- javascript------------------ -->
     <script>
         //------------- login button event----------
@@ -121,32 +105,27 @@
          const deposit_Number = input_number("deposit_Amount");
          console.log(deposit_Number);
 
+   // -------------deposit button event---------------
+          updateMethod("deposit_amount_current", deposit_Number);
+   // --------------balance event for deposit------------------
+          updateMethod("current_balance", deposit_Number);
 
-
-
-
-
-
-           // -------------deposit button event---------------
-
-            updateMethod("deposit_amount_current", deposit_Number);
-
-            // --------------balance event------------------
-
-            updateMethod("current_balance", deposit_Number);
-
-            // -----------------------------------------------
-
-            document.getElementById('deposit_Amount').value = " ";
-
-
+   // -----------------------------------------------
+         document.getElementById('deposit_Amount').value = " ";
+       
         })
 
-        // -----------balance-event-----------
+   // -----------------------withdraw-event-----------
         const withdraw_btn = document.getElementById('withdraw_btn');
         withdraw_btn.addEventListener('click',function(){
             const Withdraw_number = input_number('withdraw_amount')
-            console.log(Withdraw_number);
+   // -------------withdraw button event---------------
+            updateMethod("withdraw_amount_current", Withdraw_number);
+   // --------------balance event for withdraw------------------
+            updateMethod("current_balance", -1* Withdraw_number);
+            
+
+            document.getElementById('withdraw_amount').value = " ";
         })
 
 
